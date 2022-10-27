@@ -7,7 +7,7 @@ let package = Package(
     name: "WrappingHStack",
     platforms: [
         .iOS(.v13),
-        .tvOS(.v14),
+        .tvOS(.v13),
         .macOS(.v10_15)
     ],
     products: [
