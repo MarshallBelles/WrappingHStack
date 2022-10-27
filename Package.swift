@@ -7,8 +7,8 @@ let package = Package(
     name: "WrappingHStack",
     platforms: [
         .iOS(.v13),
+        .tvOS(.v14),
         .macOS(.v10_15)
-        .tvOS(.v15)
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
