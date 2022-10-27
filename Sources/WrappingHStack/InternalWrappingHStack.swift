@@ -25,7 +25,7 @@ struct InternalWrappingHStack: View {
                 case .newLine:
                     return (firstItemOfEachLane + [contentIterator.offset], width)
                 case .any(let anyView) where Self.isVisible(view: anyView):
-#if os(iOS)
+#if os(iOS) || os(tvOS)
                     let hostingController = UIHostingController(rootView: HStack(spacing: spacing.estimatedSpacing) { anyView })
 #else
                     let hostingController = NSHostingController(rootView: HStack(spacing: spacing.estimatedSpacing) { anyView })
@@ -72,7 +72,7 @@ struct InternalWrappingHStack: View {
     }
 
     @inline(__always) static func isVisible(view: AnyView) -> Bool {
-#if os(iOS)
+#if os(iOS) || os(tvOS)
         return UIHostingController(rootView: view).sizeThatFits(in: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width > 0
 #else
         return NSHostingController(rootView: anyView).sizeThatFits(in: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width > 0
